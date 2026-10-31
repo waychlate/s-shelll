@@ -45,8 +45,13 @@ Singleton {
     property string timeFormat: "HH:mm"     // 24-hour
     property string dateFormat: "ddd, MMM d"
 
+    // ---- overheat toast ---------------------------------------------------
+    property int heatLimit: 80       // °C, show the toast at or above this
+    property int heatClear: 75       // °C, must cool below this before it can show again
+    property int heatCooldown: 300   // seconds, minimum gap between toasts
+
     readonly property color accentInk: "#111111"   // text/icons drawn on an accent fill
-    readonly property color hot: accents[3]       // warnings (low battery, later: heat)
+    readonly property color hot: accents[3]       // warnings (low battery, overheat)
 
     // scale a design-pixel value by barScale
     function px(n) { return Math.round(n * barScale) }

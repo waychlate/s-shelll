@@ -1,3 +1,4 @@
+//@ pragma UseQApplication
 import Quickshell
 
 // Entry point. Run with:  qs -p ~/projects/personal/shadow-shell
@@ -5,4 +6,5 @@ import Quickshell
 ShellRoot {
     Bar {}
     Launcher {}
+    HeatToast {}
 }
