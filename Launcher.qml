@@ -118,7 +118,17 @@ Scope {
                             font.family: Theme.fontFamily
                             font.pixelSize: 24 * win.s
                             clip: true
-                            cursorDelegate: Rectangle { width: 2.5 * win.s; radius: 1; color: Theme.accent }
+                            cursorDelegate: Rectangle {
+                                width: 2.5 * win.s; radius: 1; color: Theme.accent
+                                // blink: hold, fade out, hold, fade in
+                                SequentialAnimation on opacity {
+                                    loops: Animation.Infinite
+                                    PauseAnimation { duration: 450 }
+                                    NumberAnimation { to: 0; duration: 120 }
+                                    PauseAnimation { duration: 350 }
+                                    NumberAnimation { to: 1; duration: 120 }
+                                }
+                            }
 
                             onTextChanged: { win.selected = 0; win.navigated = false }
 

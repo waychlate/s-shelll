@@ -37,4 +37,18 @@ Singleton {
     readonly property color tileFill: Qt.rgba(1, 1, 1, 0.07)
     readonly property real panelRadius: 28 * uiScale
     readonly property real tileRadius: 18 * uiScale
+
+    // ---- bar --------------------------------------------------------------
+    property real barScale: uiScale        // bar size; set separately if you want it bigger/smaller
+    property bool workspaceIconsOnly: false // true = occupied workspaces show icons instead of the number
+    property int maxWorkspaceIcons: 3       // more than this collapses to "+N"
+    property string timeFormat: "HH:mm"     // 24-hour
+    property string dateFormat: "ddd, MMM d"
+
+    readonly property color accentInk: "#111111"   // text/icons drawn on an accent fill
+    readonly property color hot: accents[3]       // warnings (low battery, later: heat)
+
+    // scale a design-pixel value by barScale
+    function px(n) { return Math.round(n * barScale) }
+    readonly property int barHeight: px(52)
 }
