@@ -11,16 +11,16 @@ RowLayout {
     spacing: Theme.px(4)
 
     function iconFor(cls) {
+        DesktopEntries.applications.values;   // re-run once desktop entries finish loading at startup
         const entry = DesktopEntries.heuristicLookup(cls);
         return Quickshell.iconPath(entry ? entry.icon : cls.toLowerCase(), "application-x-executable");
     }
 
-    Component.onCompleted: {
-        Hyprland.refreshWorkspaces();
-        Hyprland.refreshToplevels();
-    }
+    // window class names (for icons) are only fetched on demand. Don't also call
+    // refreshWorkspaces() here: doing that at startup leaves every workspace at id -1.
+    Component.onCompleted: Hyprland.refreshToplevels()
 
-    // window class names are only refreshed on demand, so re-read on window events
+    // re-read class names on window events
     Connections {
         target: Hyprland
         function onRawEvent(event) {

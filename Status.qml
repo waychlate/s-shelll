@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 
-// Power profile · volume · Wi-Fi · battery.
+// Power profile · volume · brightness · Wi-Fi · battery.
 // The power profile button is loaded separately so that if your Quickshell build
 // doesn't have the power-profiles API, only that icon is missing, not the whole bar.
 RowLayout {
@@ -15,6 +15,8 @@ RowLayout {
     }
 
     VolumeButton { Layout.alignment: Qt.AlignVCenter }
+
+    BrightnessButton { Layout.alignment: Qt.AlignVCenter }
 
     WifiButton { Layout.alignment: Qt.AlignVCenter }
 
